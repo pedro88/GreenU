@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // Pas de rootDir ici
+    "outDir": "dist",
+
+    "module": "commonjs",
+    "target": "ES2020",
+    "lib": ["esnext"],
+    "types": ["node"],
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["packages/shared/src/*"]
+    }
+  },
+  "include": ["packages"]
+}
