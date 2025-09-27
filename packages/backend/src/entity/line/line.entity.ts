@@ -22,7 +22,7 @@ export class Line extends Model implements ILine {
 
   //RELATIONS
 
-  @ManyToOne(() => Garden, (garden) => garden.beds)
+  @ManyToOne(() => Garden, (garden) => garden.lines)
   garden!: Garden;
 
   @ManyToOne(() => Bed, (bed) => bed.lines)

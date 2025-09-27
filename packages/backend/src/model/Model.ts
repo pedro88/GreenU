@@ -15,7 +15,7 @@ import z from "zod";
 
 const ModelSchema = ModelNoIdSchema.extend({
   id: z.number().optional(),
-  deletedAt: z.date().optional(),
+  deletedAt: z.date().optional().nullable(),
 });
 
 export interface IModel extends IModelNoId {
@@ -41,6 +41,17 @@ export default abstract class Model extends BaseEntity implements IModel {
   validate(): void {
     // Valide l'instance actuelle
     const result = ModelSchema.safeParse(this);
+
+    if (
+      this.deletedAt !== null &&
+      this.deletedAt !== undefined &&
+      !(this.deletedAt instanceof Date)
+    ) {
+      throw new Error(
+        `Invalid input: expected date or null, received ${typeof this
+          .deletedAt}`
+      );
+    }
 
     if (!result.success) {
       // Lance une erreur avec les détails de validation

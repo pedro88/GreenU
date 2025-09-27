@@ -23,6 +23,7 @@ export const fetchOneUser = async (req: Request, res: Response) => {
         "gender",
         "comment",
         "avatar",
+        "garden",
       ],
     });
 
