@@ -2,19 +2,19 @@ import { Entity, Column, OneToMany, ManyToMany } from "typeorm";
 import { nullable } from "zod";
 import Model from "../../model/Model";
 import { removeListener } from "process";
-import { Users } from "../users/users.entity";
+import { User } from "../user/user.entity";
 
-export interface IRoles {
+export interface IRole {
   name: string;
 }
 
 @Entity()
-export class Roles extends Model implements IRoles {
+export class Role extends Model implements IRole {
   @Column("varchar", { nullable: false })
   name!: string;
 
   //RELATIONS
 
-  @ManyToMany(() => Users, (user) => user.roles)
-  users!: Users[];
+  @ManyToMany(() => User, (user) => user.roles)
+  users!: User[];
 }

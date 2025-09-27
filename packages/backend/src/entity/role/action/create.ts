@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../../../data-source";
-import { Roles } from "../roles.entity";
+import { Role } from "../role.entity";
 
 export const createRole = async (req: Request, res: Response) => {
   try {
-    const roleRepo = AppDataSource.getRepository(Roles);
+    const roleRepo = AppDataSource.getRepository(Role);
     const { name } = req.body;
 
     if (!name)

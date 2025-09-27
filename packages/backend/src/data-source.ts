@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Users } from "./entity/users/users.entity";
-import { Roles } from "./entity/roles/roles.entity";
+import { User } from "./entity/user/user.entity";
+import { Role } from "./entity/role/role.entity";
 
 export const AppDataSource = new DataSource({
   type: "mariadb",
@@ -17,7 +17,7 @@ export const AppDataSource = new DataSource({
   //      migrations: [`lib/api/migration/*.js`],
   //      entities: [`lib/api/entity/**/*.entity.js`],
 
-  entities: [Users, Roles],
+  entities: [User, Role],
   // dropSchema: true,
   migrations: [],
   subscribers: [],

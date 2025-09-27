@@ -1,11 +1,11 @@
 // src/controllers/userController.ts
 import { Request, Response } from "express";
 import { AppDataSource } from "../../../data-source";
-import { Users } from "../users.entity";
+import { User } from "../user.entity";
 
 export const fetchOneUser = async (req: Request, res: Response) => {
   try {
-    const userRepository = AppDataSource.getRepository(Users);
+    const userRepository = AppDataSource.getRepository(User);
     const { uuid } = req.params; // on récupère l'uuid depuis l'URL
 
     if (!uuid) {

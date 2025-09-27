@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../../../data-source";
-import { Users } from "../users.entity";
+import { User } from "../user.entity";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const userRepository = AppDataSource.getRepository(Users);
+    const userRepository = AppDataSource.getRepository(User);
 
     const { firstname, lastname, email, password, gender, comment, avatar } =
       req.body;

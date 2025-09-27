@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../../../data-source";
-import { Users } from "../users.entity";
+import { User } from "../user.entity";
 
 export const fetchAllUsers = async (req: Request, res: Response) => {
   try {
-    const userRepository = AppDataSource.getRepository(Users);
+    const userRepository = AppDataSource.getRepository(User);
 
     // récupère tous les users
     const users = await userRepository.find({

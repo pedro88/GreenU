@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createRole } from "../entity/roles/action/create";
+import { createRole } from "../entity/role/action/create";
 
 const router = Router();
 

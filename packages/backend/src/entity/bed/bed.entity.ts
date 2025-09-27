@@ -1,23 +1,27 @@
-import { Entity, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
+import {
+  Entity,
+  Column,
+  OneToMany,
+  ManyToMany,
+  JoinTable,
+  ManyToOne,
+} from "typeorm";
 import { nullable } from "zod";
 import Model from "../../model/Model";
 import { removeListener } from "process";
-import { User } from "../user/user.entity";
-import { Bed } from "../bed/bed.entity";
+import { Garden } from "../garden/garden.entity";
 import { Line } from "../line/line.entity";
 
-export interface IGarden {
+export interface IBed {
   name: string;
   length: number;
   width: number;
-  adress: string;
-  type: string;
   comment: string | null;
   baneer: string | null;
 }
 
 @Entity()
-export class Garden extends Model implements IGarden {
+export class Bed extends Model implements IBed {
   @Column("varchar", { nullable: false })
   name!: string;
 
@@ -27,12 +31,6 @@ export class Garden extends Model implements IGarden {
   @Column("number", { nullable: false })
   width!: number;
 
-  @Column("varchar", { nullable: false })
-  adress!: string;
-
-  @Column("varchar", { nullable: false })
-  type!: string;
-
   @Column("varchar", { nullable: true })
   comment!: string;
 
@@ -41,12 +39,9 @@ export class Garden extends Model implements IGarden {
 
   //RELATIONS
 
-  @ManyToMany(() => User, (user) => user.garden)
-  users!: User[];
+  @ManyToOne(() => Garden, (garden) => garden.beds)
+  garden!: Garden;
 
-  @OneToMany(() => Bed, (beds) => beds.garden)
-  beds!: Bed[];
-
-  @OneToMany(() => Line, (lines) => lines.garden)
+  @OneToMany(() => Line, (line) => line.bed)
   lines!: Line[];
 }

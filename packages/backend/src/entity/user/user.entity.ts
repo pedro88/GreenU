@@ -2,10 +2,10 @@ import { Entity, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
 import { nullable } from "zod";
 import Model from "../../model/Model";
 import { removeListener } from "process";
-import { Roles } from "../roles/roles.entity";
+import { Role } from "../role/role.entity";
 import { Garden } from "../garden/garden.entity";
 
-export interface IUsers {
+export interface IUser {
   firstname: string;
   lastname: string;
   email: string;
@@ -16,7 +16,7 @@ export interface IUsers {
 }
 
 @Entity()
-export class Users extends Model implements IUsers {
+export class User extends Model implements IUser {
   @Column("varchar", { nullable: false })
   firstname!: string;
 
@@ -40,9 +40,9 @@ export class Users extends Model implements IUsers {
 
   //RELATIONS
 
-  @ManyToMany(() => Roles, (roles) => roles.users, { eager: true }) // eager: true pour charger automatiquement
+  @ManyToMany(() => Role, (roles) => roles.users, { eager: true }) // eager: true pour charger automatiquement
   @JoinTable() // nécessaire sur un côté de la relation pour créer la table de jointure
-  roles!: Roles[];
+  roles!: Role[];
 
   @ManyToMany(() => Garden, (garden) => garden.users, { eager: true }) // eager: true pour charger automatiquement
   @JoinTable() // nécessaire sur un côté de la relation pour créer la table de jointure
