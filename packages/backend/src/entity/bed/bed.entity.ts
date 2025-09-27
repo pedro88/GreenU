@@ -25,10 +25,10 @@ export class Bed extends Model implements IBed {
   @Column("varchar", { nullable: false })
   name!: string;
 
-  @Column("number", { nullable: false })
+  @Column("int", { nullable: false })
   length!: number;
 
-  @Column("number", { nullable: false })
+  @Column("int", { nullable: false })
   width!: number;
 
   @Column("varchar", { nullable: true })

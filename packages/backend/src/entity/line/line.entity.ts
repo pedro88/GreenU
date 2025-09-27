@@ -14,7 +14,7 @@ export class Line extends Model implements ILine {
   @Column("varchar", { nullable: false })
   name!: string;
 
-  @Column("number", { nullable: false })
+  @Column("int", { nullable: false })
   length!: number;
 
   @Column("varchar", { nullable: true })

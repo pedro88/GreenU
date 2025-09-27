@@ -21,10 +21,10 @@ export class Garden extends Model implements IGarden {
   @Column("varchar", { nullable: false })
   name!: string;
 
-  @Column("number", { nullable: false })
+  @Column("int", { nullable: false })
   length!: number;
 
-  @Column("number", { nullable: false })
+  @Column("int", { nullable: false })
   width!: number;
 
   @Column("varchar", { nullable: false })

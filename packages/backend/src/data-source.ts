@@ -17,7 +17,7 @@ export const AppDataSource = new DataSource({
   //      migrations: [`lib/api/migration/*.js`],
   //      entities: [`lib/api/entity/**/*.entity.js`],
 
-  entities: [User, Role],
+  entities: [`src/entity/**/*.entity.ts`],
   // dropSchema: true,
   migrations: [],
   subscribers: [],
